@@ -75,4 +75,4 @@ if st.button('Отправить'):
     result = text2toxicity(st.session_state.text_value, aggregate=True)
     
     # Вывод результата
-    st.write(result)
+    st.write(f'Вероятность токсичности сообщения: {result}')
