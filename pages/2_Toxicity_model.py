@@ -40,22 +40,34 @@ def init_session_state():
 init_session_state()
 
 # Заголовок приложения
-st.title('Ну и нахрена ты сюда пришел? Тебе что, заняться больше нечем, кроме как с модельками токсичности играться? Выйди на улицу, траву потрогай, неудачник.')
+deftox = 'Ну и нахрена ты сюда пришел? Тебе что, заняться больше нечем, кроме как с модельками токсичности играться? Выйди на улицу, траву потрогай, неудачник.'
+defnontox = 'Ты хороший человек'
+st.title('Модель проверки сообщений на токсичность')
 
 # Расположение кнопок в одну строку
 col1, col2 = st.columns(2)
-
+defvalue = st.session_state.text_value
 # Кнопка 1
 with col1:
     if st.button('Токсичное'):
         st.session_state.button1 = True
-
+        defvalue = deftox
 # Кнопка 2
 with col2:
     if st.button('Нетоксичное'):
         st.session_state.button2 = True
+        defvalue = defnontox
 
-st.session_state.text_value = st.text_area("Введите текст:",value='')
+if st.session_state.button1:
+    defvalue = deftox
+    st.session_state.button1 = False
+elif st.session_state.button2:
+    defvalue = defnontox
+    st.session_state.button2 = False
+else:
+    defvalue = st.session_state.text_value
+
+st.session_state.text_value = st.text_area("Введите текст:",value=defvalue)
 
 # Кнопка для отправки текста в функцию
 if st.button('Отправить'):
