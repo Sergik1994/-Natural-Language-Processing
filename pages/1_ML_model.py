@@ -55,7 +55,7 @@ def process_text(input_text, models):
     return pd.Series(dd).rename('Prediction')
 
 # Заголовок приложения
-st.title('Приложение для ввода текста')
+st.title('Проверка отзыва на положительность или отрицательность')
 
 # Расположение кнопок в одну строку
 col1, col2, col3 = st.columns(3)
